@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>jQuery.miniTranslate</title>
+  <meta charset="utf-8">
+  <meta name="description" content="jQuery miniTranslate" />
+  <meta name="keywords" content="jQuery miniTranslate" />
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:600,700' rel='stylesheet' type='text/css'>
+  <link REL="shortcut icon" HREF="img/favicon.ico">
+  <link rel="stylesheet" href="css/styles.css">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+          <div class="jumbotron">
+            <div class="container">
+              <h1>jQuery.miniTranslate</h1>
+              <p>A lightweight way to change words into other words.</p>
+              <div class="btn-group">
+                <button type="button" class="btn btn-lg btn-primary"><a href="#features">Features</a></button>
+                <button type="button" class="btn btn-lg btn-info"><a href="#use">Install</a></button>
+                <button type="button" class="btn btn-lg btn-warning"><a href="/qunit.html">Tests</a></button>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-lg btn-success dropdown-toggle" data-toggle="dropdown">Download <span class="caret"></span></button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">jQuery.miniTranslate.js</a></li>
+                    <li><a href="#">jQuery.miniTranslate.min.js</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="try">
+        <div class="col-md-4 col-md-offset-1 col-lg-4 col-lg-offset-1">
+          <div class="input-group-lg try">
+            <h3>Type here...</h3>
+            <input type="text" class="form-control" id="mt-input" placeholder="Try it out!"></input>
+          </div>
+        </div>
+
+        <div class="col-md-2 arrow">
+          <!-- <span class="glyphicon glyphicon-chevron-right arrow-right"></span>
+          <span class="glyphicon glyphicon-chevron-down arrow-down"></span> -->
+        </div>
+
+        <div class="col-md-4 col-md-offset-2 col-lg-4 col-lg-offset-2">
+          <div class="input-group-lg try">
+            <h3 align="right">...and see it translated here.</h3>
+            <input type="text" class="form-control" id="mt-output" placeholder="Translated text!"></input>
+          </div>
+        </div>
+      </div>
+
+      <div class="row lib">
+        <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+          <table class="table" id="library">
+            <h3 align="center">Sample Library</h3>
+            <tr>
+              <td><b>Key</b></td>
+              <td><b>Value</b></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+        <hr>
+      </div>
+    </div>
+
+    <div class="row feat" id="features">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-3 col-md-offset-3 col-lg-2 col-lg-offset-2">
+        <h1 class="large">Features</h1>
+        <img src="img/watch@2x.png">
+        <div class="caption">
+          <h2>Fast translations.</h2>
+          <p>Quick RegExp matching finds the words that need to be replaced inside of a div and does it quickly.</p>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-3 col-md-offset-0 col-lg-2 col-lg-offset-1">
+        <img src="img/book@2x.png">
+        <div class="caption">
+          <h2>Dead-simple library.</h2>
+          <p>Word-pair library is stored in JSON format in <b>mt-lib.js</b> and is easy to edit both in advance and on-the-fly.</p>
+        </div> 
+      </div>
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-2 col-lg-offset-1">
+        <img src="img/box@2x.png">
+        <div class="caption">
+          <h2>One tiny package.</h2>
+          <p>The minimized file is only 10 bytes in size - perfect for light web projects and quick additions to existing text interfaces.</p>
+        </div> 
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+        <hr>
+      </div>
+    </div>
+
+    <div class="row feat" id="use">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+        <h1 class="large">Installation</h1>
+        <div class="caption">
+          <p>Download jQuery.miniTranslate.js or jQuery.miniTranslate.min.js and include it in your index.html, along with the translations library:</p>
+          <br>
+          <p id="script">&lt;script src="js/jQuery.miniTranslate.js"&gt;&lt;/script&gt;</p>
+          <p id="script">&lt;script src="js/mt-lib.js"&gt;&lt;/script&gt;</p>
+          <br>
+          <p>Edit mt-lib.json and add as many word-replacement pairs as you so desire, just make sure it stays in the same directory as miniTranslate.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row use" id="use">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-3 col-md-offset-3 col-lg-4 col-lg-offset-2">
+        <div class="caption">
+          <h2>Static translation:</h2>
+          <p>Simply add the class ".mt-translate" to a div and watch as it is translated according to your library.</p>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-3 col-md-offset-0 col-lg-4 col-lg-offset-0">
+        <div class="caption">
+          <h2>Dynamic translation:</h2>
+          <p>Add two &lt;input&gt; divs with IDs:</p>
+          </br>
+          <p>&nbsp;&nbsp;1) "#mt-input" and</p>
+          <p>&nbsp;&nbsp;2) "#mt-output"</p>
+          </br>
+          <p>Whenever the input's value is changed, the output will translate whatever matches there are in your library.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="js/jQuery.miniTranslate.js"></script>
+    <script src="js/app.js"></script>
+  </div>
+</body>
+<footer>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 footer">
+        <h5>Fork my <a href="http://minion.io">Minion Translator</a> and make your own!</h5>
+        <h5>Crafted with love by <a href="http://bryce.io">bryce</a>, &copy; 2014 <a href="http://opensource.org/licenses/MIT">The MIT License</a></h5>
+        <h5>Tip me Dogecoins: <small>DR1SGfxekp3mcQcr73B1fkVgELMmfqat1o</small></h5>
+      </div>
+    </div>
+  </div>
+</footer>
+</html>

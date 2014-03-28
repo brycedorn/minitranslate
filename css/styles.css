@@ -1,0 +1,188 @@
+@charset"UTF-8";
+
+html {
+    background: #9E9BA4;
+}
+body {
+    font-family:"Open Sans";
+    /*font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;*/
+    background: #667787;
+    color: #F7F6E2;
+    -webkit-transition: color 0.15s ease-out;
+    -moz-transition: color 0.15s ease-out;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+}
+
+/* 
+ .d8888b.                                              888 
+d88P  Y88b                                             888 
+888    888                                             888 
+888         .d88b.  88888b.   .d88b.  888d888  8888b.  888 
+888  88888 d8P  Y8b 888 "88b d8P  Y8b 888P"       "88b 888 
+888    888 88888888 888  888 88888888 888     .d888888 888 
+Y88b  d88P Y8b.     888  888 Y8b.     888     888  888 888 
+ "Y8888P88  "Y8888  888  888  "Y8888  888     "Y888888 888                      
+*/
+
+a {
+    color: #f0ad4e;
+}
+a:hover {
+    color: #eea236;
+    text-decoration: none;
+}
+.jumbotron {
+    background: #E1E1D5;
+    color: #667787;
+    border-radius: 10px;
+    margin-top: 14px;
+}
+button a {
+    color: #ECECE4;
+}
+button:hover {
+    color: #FFFFFF;
+}
+button a:hover {
+    color: #ECECE4;
+}
+button {
+    margin-top: 2px;
+}
+h1.large {
+    font-size: 4em;
+    margin-bottom: 30px;
+}
+.feat {
+    text-align: center;
+    padding: 40px 0;
+}
+.feat img {
+    margin-top: 24px;
+}
+.feat p,.use p {
+    font-size: 1.2em;
+    line-height: 1.6em;
+    margin: 12px auto;
+    text-align: left;
+}
+td button {
+    position: relative;
+    top: -12px;
+}
+#script {
+    text-align: center;
+}
+.try {
+    margin: 0 auto;
+    width: 90%;
+}
+hr {
+    border-top: 3px dashed #E1E1D5;
+    margin: 60px 0 10px 0;
+}
+.try h3 {
+    padding: 10px 4px;
+}
+.try input, .table input {
+    background: #F7F6E2;
+    color: #667787;
+}
+input:focus {
+    outline: none;
+}
+*::selection {
+    background: #D3CCC6;
+}
+*::-webkit-selection {
+    background: #D3CCC6;
+}
+
+.lib {
+    margin-top: 50px;
+}
+.lib a {
+    cursor: pointer;
+}
+a.add {
+    color: #5bc0de;
+}
+a.add:hover {
+    color: #46b8da;
+}
+td,tr,table,tbody {
+     border: none !important;
+}
+footer {
+    margin-top: 40px;
+}
+.footer {
+    padding: 2px 10px;
+    margin-bottom: 14px;
+    border-radius: 8px;
+    text-align: center;
+    background: rgba(188,185,194,0.5);
+}
+h5 {
+    line-height: 10px;
+}
+h5 small {
+    color: #F7F6E2;
+    font-family: Comic Sans MS;
+}
+
+.arrow {
+    text-align: center;
+}
+.arrow-right {
+    /*display: none;*/
+}
+.arrow-down {
+    margin-top: 30px;
+}
+
+@media (max-width: 530px) {
+    h1 {
+        font-size: 1.8em;
+    }
+    .jumbotron button {
+        padding: 5px 10px;
+        font-size: 12px;
+        line-height: 1.5;
+        border-radius: 3px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        border-radius: 0;
+        margin-bottom: 0;
+    }
+    button {
+        padding: 5px 10px;
+        font-size: 12px;
+        line-height: 1.5;
+        border-radius: 3px;
+    }
+    h1 {
+        /*font-size: 2.2em;*/
+    }
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 992px) {
+   
+}
+
+@media (min-width: 1200px) {
+    .arrow-right {
+        margin-top: 60px;
+        display: block;
+    }
+    .arrow-down {
+        display: none;
+    }
+}

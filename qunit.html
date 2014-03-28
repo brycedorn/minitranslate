@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>QUnit Testing</title>
+  <link rel="stylesheet" href="css/qunit-1.14.0.css">
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+
+  <div id="test-static" class="mt-translate">
+    <h1>Hello World!</h1>
+  </div>
+  <hr>
+  <div id="test-watch">
+    <input value="Hello world" id="mt-watch"></input>
+  </div>
+  <hr>
+  <div id="test-ignore" class="mt-watch">
+    <h1>Hello World, don't ignore me!</h1>
+    <h2 class="mt-ignore">Hello World, please ignore me!</h2>
+  </div>
+  <hr>
+  <div id="test-st" class="mt-ignore">
+    <h1>Hello do me!</h1>
+    <h2 class="mt-ignore">Hello World!</h2>
+  </div>
+
+  <script src="js/libs/jquery.min.js"></script>
+  <script src="js/libs/qunit-1.14.0.js"></script>
+  <script src="js/jQuery.miniTranslate.js"></script>
+  <script src="js/tests.js"></script>
+</body>
+</html>
