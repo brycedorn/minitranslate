@@ -74,6 +74,9 @@ td button {
 #script {
     text-align: center;
 }
+.caption {
+    padding: 0 10px;
+}
 .try {
     margin: 0 auto;
     width: 90%;
@@ -143,8 +146,9 @@ h5 small {
 }
 
 @media (max-width: 530px) {
-    h1 {
+    .jumbotron h1 {
         font-size: 1.8em;
+        font-weight: bold;
     }
     .jumbotron button {
         padding: 5px 10px;
