@@ -10,25 +10,29 @@
   <div id="qunit-fixture"></div>
 
   <div id="test-static" class="mt-translate">
-    <h1>Hello World!</h1>
+    <h1>Hello static World!</h1>
   </div>
   <hr>
-  <div id="test-watch">
-    <input value="Hello world" id="mt-watch"></input>
+  <div id="test-dynamic">
+    <input value="Hello world" id="mt-input"></input>
+    <input value="Hello world" id="mt-output"></input>
   </div>
   <hr>
-  <div id="test-ignore" class="mt-watch">
+  <div id="test-ignore" class="mt-translate">
     <h1>Hello World, don't ignore me!</h1>
     <h2 class="mt-ignore">Hello World, please ignore me!</h2>
   </div>
   <hr>
-  <div id="test-st" class="mt-ignore">
-    <h1>Hello do me!</h1>
-    <h2 class="mt-ignore">Hello World!</h2>
+  <div class="mt-ignore">
+    <h1>Hello, don't translate me!</h1>
+  </div>
+  <div id="test-caps" class="mt-translate">
+    <h1>HelLo wOrLd!</h1>
   </div>
 
   <script src="js/libs/jquery.min.js"></script>
   <script src="js/libs/qunit-1.14.0.js"></script>
+  <script src="js/mt-lib.js"></script>
   <script src="js/jQuery.miniTranslate.js"></script>
   <script src="js/tests.js"></script>
 </body>
