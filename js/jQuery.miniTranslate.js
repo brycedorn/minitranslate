@@ -1,4 +1,5 @@
-console.log("MT LOADED");
+// Ready to rumble.
+console.log("MT READY");
 
 function mt(mt_lib, div) {
     if ($(div).length > 0 && (mt_lib.length > 0 && $(div).attr("class") != "mt-ignore"))
