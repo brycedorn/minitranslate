@@ -10,11 +10,12 @@ test("should initialize library correctly", function() {
   ok( library.length == 2, "Passed!" );
   ok( library[0].w == "Hello", "Passed!" );
   ok( library[0].r == "Goodbye", "Passed!" );
+  ok( library[1].w == "World", "Passed!" );
+  ok( library[1].r == "Mars", "Passed!" );
 });
 
 test("should stop if the div doesn't exist", function() {
   ok( $("#doesntexist").length == 0, "Passed!" );
-  // ok( $("#test-static").length > 0, "Passed!" );
   mt(library,$("#doesntexist")); // Shouldn't cause issues
 });
 
@@ -25,10 +26,8 @@ test("should stop if the library is empty", function() {
 });  
 
 test("should work in static case", function() {
-  ok($("#test-static").attr('class') == ".mt-translate", "Passed!" );
-  ok($("#test-static").children().text() == "Hello World!", "Passed!" );
-  mt(library,$("#test-static"));
-  ok($("#test-static").children().text() == "/\bGoodbye\b/g World!", "Passed!" );
+  ok($("#test-static").attr('class') == "mt-translate", "Passed!" );
+  ok($("#test-static").children()[0].text() == "Goodbye static World!", "Passed!" );
 });
 
 test("should work in dynamic case", function() {
