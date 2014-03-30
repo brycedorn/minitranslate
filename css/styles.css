@@ -5,7 +5,6 @@ html {
 }
 body {
     font-family:"Open Sans";
-    /*font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;*/
     background: #667787;
     color: #F7F6E2;
     -webkit-transition: color 0.15s ease-out;
@@ -126,6 +125,9 @@ h5 small {
     color: #F7F6E2;
     font-family: Comic Sans MS;
 }
+.items {
+    padding: 10px 40px 10px 20px;
+}
 
 .arrow {
     text-align: center;
@@ -147,6 +149,17 @@ h5 small {
         font-size: 12px;
         line-height: 1.5;
         border-radius: 3px;
+    }
+}
+
+@media (max-width: 576px) {
+    ul.dropdown-menu {
+        right: 0px;
+        padding: 2px;
+        font-size: 80%; 
+    }
+    ul.dropdown-menu a {
+        padding: 4px;
     }
 }
 
