@@ -15,7 +15,7 @@
   <body>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+        <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-xs-12">
           <div class="jumbotron">
             <div class="container">
               <h1>jQuery.miniTranslate</h1>
@@ -27,8 +27,10 @@
                 <div class="btn-group">
                   <button type="button" class="btn btn-lg btn-success dropdown-toggle" data-toggle="dropdown"><a>Download</a> <span class="caret"></span></button>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">jQuery.miniTranslate.js</a></li>
-                    <li><a href="#">jQuery.miniTranslate.min.js</a></li>
+                    <li><a href="js/jQuery.miniTranslate.js">jQuery.miniTranslate.js</a></li>
+                    <li><a href="js/jQuery.miniTranslate.js">jQuery.miniTranslate.min.js</a></li>
+                    <li class="divider"></li>
+                    <li><a href="js/mt-lib.js">mt-lib.js</a></li>
                   </ul>
                 </div>
               </div>
@@ -151,18 +153,16 @@
       <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-3 col-md-offset-3 col-lg-4 col-lg-offset-2">
         <div class="caption">
           <h2>Static translation:</h2>
-          <p>Simply add the class ".mt-translate" to a div and watch as it is translated according to your library.</p>
+          <p>Simply add the class "mt-translate" to a div and watch as it is translated according to your library.</p>
         </div>
       </div>
       <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-3 col-md-offset-0 col-lg-4 col-lg-offset-0">
         <div class="caption">
           <h2>Dynamic translation:</h2>
           <p>Add two &lt;input&gt; divs with IDs:</p>
-          </br>
-          <p>&nbsp;&nbsp;1) "#mt-input" and</p>
-          <p>&nbsp;&nbsp;2) "#mt-output"</p>
-          </br>
-          <p>Whenever the input's value is changed, the output will translate whatever matches there are in your library.</p>
+          <p class="items">&lt;input id="mt-input"/&gt;</p>
+          <p class="items">&lt;input id="mt-output"/&gt;</p>
+          <p>Whenever the input's content is changed, the output's will be the translation pertaining to all word-pair matches in your library.</p>
         </div>
       </div>
     </div>
@@ -170,6 +170,7 @@
 
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="js/mt-lib.js"></script>
     <script src="js/jQuery.miniTranslate.js"></script>
     <script src="js/app.js"></script>
   </div>
