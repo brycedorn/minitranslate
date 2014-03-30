@@ -3,7 +3,7 @@ console.log("MT LOADED");
 
 // miniTranslate
 function mt(mt_lib,div) {
-  if($(div).text().length > 0 && mt_lib.length > 0 && $(div).attr('class') != "mt-ignore") {
+  if($(div).length > 0 && mt_lib.length > 0 && $(div).attr('class') != "mt-ignore") {
     // Save the children!
     if($(div).children().length > 0) {
       for(var j=0; j<$(div).children().length; j++) {
@@ -50,35 +50,51 @@ function mt(mt_lib,div) {
         }
       }
     }
+    
     else { // No kids :(
-      if(div.attr('class') != "mt-ignore") {
-        // If it's an input, get val(), otherwise get text()
-        if($(div).attr('id') == "mt-output") {
-          var txt = $(div).val();
-        }
-        else var txt = $(div).text();
+      // If it's an input, get val(), otherwise get text()
+      console.log("hey");
+      if($(div).attr('id') == "mt-output") {
+        var txt = $(div).val();
+      }
+      else var txt = $(div).text();
 
-        // Array of tokens
-        var txt_arr = txt.split(" ");
+      // Find where punctuation was so we can re-apply at end
+      var tmp = txt.split(" ");
 
-        // Iterate through library
-        for(var i=0; i<mt_lib.length; i++) {
-          for(var j=0; j<txt_arr.length; j++) {
-            var capitals = detect_capitals(txt_arr[j]);
-            if(txt_arr[j].toLowerCase() == mt_lib[i].w.toLowerCase()) {
-              txt_arr[j] = apply_capitals(mt_lib[i].r,capitals);
-            }
+      // Only do this if there's punctuation
+      var punct = [];
+      for(var i=0; i<tmp.length; i++) {
+        for(var k=0; k<tmp[i].length; k++) {
+          // Word at index i has punctuation at end of it.
+          if(tmp[i].charAt[k] >= '!' && tmp[i].charAt[k] <= '@') {
+            punct.push(tmp[i].charAt[k],i);
+            console.log("Added "+punct);
           }
         }
-      // All words are applied
-      txt = txt_arr.join(" ");
+      }
 
-      // Apply translation
-      if($(div).attr('id') == "mt-output") {
-        $(div).val(txt);
+      // Array of tokens without punctuation
+      txt = txt.replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g,'');
+      var txt_arr = txt.split(" ");
+
+      // Iterate through library
+      for(var i=0; i<mt_lib.length; i++) {
+        for(var j=0; j<txt_arr.length; j++) {
+          var capitals = detect_capitals(txt_arr[j]);
+          if(txt_arr[j].toLowerCase() == mt_lib[i].w.toLowerCase()) {
+            txt_arr[j] = apply_capitals(mt_lib[i].r,capitals);
+          }
+        }
       }
-        else $(div).text(txt);   
-      }
+    // All words are applied
+    txt = txt_arr.join(" ");
+
+    // Apply translation
+    if($(div).attr('id') == "mt-output") {
+      $(div).val(txt);
+    }
+      else $(div).text(txt);   
     }
   }
 }
@@ -123,7 +139,6 @@ function apply_capitals(word,capitals) {
 // Translate all divs with '.mt-translate'
 function mt_translate(mt_lib) {
   $(".mt-translate").each(function(i,div) {
-    console.log(i);
     mt(mt_lib,div);
   });
 }
