@@ -1,0 +1,19 @@
+{
+  "author": "Bryce Dorn (http://bryce.io)",
+  "name": "minitranslate",
+  "description": "A lightweight way to change words into other words.",
+  "version": "1.0.0",
+  "homepage": "http://www.minitranslate.herokuapp.com/",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/brycedorn/jQuery.minitranslate.git"
+  },
+  "scripts": {},
+  "dependencies": {
+    "jquery": "~2.1",
+    "qunit": "0.6"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {}
+}
