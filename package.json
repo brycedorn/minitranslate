@@ -8,12 +8,9 @@
     "type": "git",
     "url": "git://github.com/brycedorn/jQuery.minitranslate.git"
   },
-  "scripts": {},
-  "dependencies": {
-    "jquery": "~2.1",
-    "qunit": "0.6"
-  },
-  "devDependencies": {},
-  "optionalDependencies": {},
-  "engines": {}
+  "keywords": [
+    "translate",
+    "translator",
+    "minitranslate"
+  ]
 }
