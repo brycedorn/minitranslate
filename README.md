@@ -3,7 +3,7 @@ jQuery.miniTranslate
 
 A lightweight way to change words into other words.
 
-[bryce.io/minitranslate](http:http://bryce.io/minitranslate/)
+[bryce.io/minitranslate](http://bryce.io/minitranslate/)
 
 ## Features
  * WYSIWYG word-replacement translator
