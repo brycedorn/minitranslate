@@ -18,12 +18,11 @@ function mt(mt_lib, div) {
           for(var i = 0; i < tmp.length; i++)
             for(var k = 0; k < tmp[i].length; k++)
               // Word at index i has punctuation at end of it.
-              if(tmp[i].charAt(k) >= "!" && tmp[i].charAt(k) <=
-                "@") punct.push(new pun(tmp[i].charAt(k), i));
+              if(tmp[i].charAt(k) == "!" || tmp[i].charAt(k) == "?" || tmp[i].charAt(k) == "," || tmp[i].charAt(k) == ".") punct.push(new pun(tmp[i].charAt(k), i));
+          
           // Array of tokens without punctuation
           txt = txt.replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g, "");
-          var txt_arr =
-            txt.split(" ");
+          var txt_arr = txt.split(" ");
           
           // Iterate through library
           for(i = 0; i < mt_lib.length; i++)
@@ -49,10 +48,10 @@ function mt(mt_lib, div) {
         var punct = [];
         for(var i = 0; i < tmp.length; i++)
           for(var k = 0; k < tmp[i].length; k++)
-            if(tmp[i].charAt(k) >= "!" && tmp[i].charAt(k) <= "@")
-                // Need to distinguish between a word's punctuation and input punctuation
-                // if(k == tmp[i].length || k == 0) // Ignore inter-word punctuation
-                    punct.push(new pun(tmp[i].charAt(k), i));
+            if(tmp[i].charAt(k) == "!" || tmp[i].charAt(k) == "?" || tmp[i].charAt(k) == "," || tmp[i].charAt(k) == ".") {
+              punct.push(new pun(tmp[i].charAt(k), i));
+            } 
+        
         // Array of tokens without punctuation
         txt = txt.replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g, "");
         var txt_arr = txt.split(" ");
