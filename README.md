@@ -5,6 +5,13 @@ A lightweight way to change words into other words.
 
 minitranslate.herokuapp.com
 
+http://cdnjs.com/libraries/minitranslate
+
+
+## Installation
+
+    $ npm install minitranslate
+
 ## Features
  * WYSIWYG word-replacement translator
  * RegExp matching and jQuery replacement
@@ -33,9 +40,3 @@ minitranslate.herokuapp.com
 
 
  * Dumb punctuation, currently appends to translation
-
-## Installation
-
-#### `npm install minitranslate`
-
-#### [cdnjs](http://cdnjs.com/libraries/minitranslate)
