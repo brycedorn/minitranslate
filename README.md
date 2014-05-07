@@ -3,7 +3,7 @@ jQuery.miniTranslate
 
 A lightweight way to change words into other words.
 
-minitranslate.herokuapp.com
+http://minitranslate.herokuapp.com
 
 http://cdnjs.com/libraries/minitranslate
 
