@@ -36,8 +36,6 @@ minitranslate.herokuapp.com
 
 ## Installation
 
-#### npm
-  `npm install minitranslate`
+#### `npm install minitranslate`
 
-#### cdnjs
-  http://cdnjs.com/libraries/minitranslate
+#### [cdnjs](http://cdnjs.com/libraries/minitranslate)
