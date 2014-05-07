@@ -3,7 +3,7 @@ jQuery.miniTranslate
 
 A lightweight way to change words into other words.
 
-[http://bryce.io/minitranslate](http://bryce.io/minitranslate/)
+minitranslate.herokuapp.com
 
 ## Features
  * WYSIWYG word-replacement translator
@@ -33,4 +33,11 @@ A lightweight way to change words into other words.
 
 
  * Dumb punctuation, currently appends to translation
-   - (TODO) - improve
+
+## Installation
+
+#### npm
+    npm install minitranslate
+
+#### cdnjs
+    http://cdnjs.com/libraries/minitranslate
