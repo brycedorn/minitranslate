@@ -28,8 +28,10 @@ h5{line-height:10px}
 h5 small{color:#F7F6E2;font-family:Comic Sans MS}
 .items{padding:10px 40px 10px 20px}
 .arrow-down{margin-top:30px}
+.glyphicon-circle-arrow-right{font-size: 18px;top:-2px}
+.midarrow{top:3px;}
 button a,button span,button a:hover{color:#ECECE4}
-#script,.arrow{text-align:center}
+#script,.arrow{text-align:center;font-family:Monaco}
 ::selection,::-webkit-selection{background:#D3CCC6}
 @media max-width 530px {
 .jumbotron h1{font-size:1.8em;font-weight:700}
