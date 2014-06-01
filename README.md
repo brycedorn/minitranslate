@@ -1,4 +1,4 @@
-jQuery.miniTranslate
+jQuery.minitranslate
 ====================
 
 A lightweight way to change words into other words.
