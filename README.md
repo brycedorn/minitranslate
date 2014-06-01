@@ -1,9 +1,16 @@
-jQuery.miniTranslate
+jQuery.minitranslate
 ====================
 
 A lightweight way to change words into other words.
 
-minitranslate.herokuapp.com
+http://bryce.io/minitranslate
+
+http://cdnjs.com/libraries/minitranslate
+
+
+## Installation
+
+    $ npm install minitranslate
 
 ## Features
  * WYSIWYG word-replacement translator
@@ -33,11 +40,3 @@ minitranslate.herokuapp.com
 
 
  * Dumb punctuation, currently appends to translation
-
-## Installation
-
-#### npm
-  `npm install minitranslate`
-
-#### cdnjs
-  http://cdnjs.com/libraries/minitranslate
