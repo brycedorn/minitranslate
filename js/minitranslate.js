@@ -28,7 +28,7 @@ function mt(mt_lib, div) {
             for(k = 0; k < tmp[i].length; k++) {
               // Word at index i has punctuation at end of it.
               if(tmp[i].charAt(k) === "!" || tmp[i].charAt(k) === "?" || tmp[i].charAt(k) === "," || tmp[i].charAt(k) === ".") {
-                punct.push(new pun(tmp[i].charAt(k), i));
+                punct.push(new Pun(tmp[i].charAt(k), i));
               }
             }
           }
@@ -38,13 +38,14 @@ function mt(mt_lib, div) {
           txt_arr = txt.split(" ");
 
           // Iterate through library
-          for(i = 0; i < mt_lib.length; i++)
+          for(i = 0; i < mt_lib.length; i++) {
             for(k = 0; k < txt_arr.length; k++) {
               capitals = detect_capitals(txt_arr[k]);
               if(txt_arr[k].toLowerCase() === mt_lib[i].w.toLowerCase()) {
-                txt_arr[k] = apply_capitals(mt_lib[i].r, capitals)
+                txt_arr[k] = apply_capitals(mt_lib[i].r, capitals);
               }
             }
+          }
           for(i = 0; i < punct.length; i++) {
             txt_arr[punct[i].idx] += punct[i].c;
           }
@@ -68,7 +69,7 @@ function mt(mt_lib, div) {
       for(i = 0; i < tmp.length; i++) {
         for(k = 0; k < tmp[i].length; k++) {
           if(tmp[i].charAt(k) === "!" || tmp[i].charAt(k) === "?" || tmp[i].charAt(k) === "," || tmp[i].charAt(k) === ".") {
-            punct.push(new pun(tmp[i].charAt(k), i));
+            punct.push(new Pun(tmp[i].charAt(k), i));
           }
         }
       }
@@ -81,7 +82,9 @@ function mt(mt_lib, div) {
       for(i = 0; i < mt_lib.length; i++) {
         for(j = 0; j < txt_arr.length; j++) {
           capitals = detect_capitals(txt_arr[j]);
-          if(txt_arr[j].toLowerCase() === mt_lib[i].w.toLowerCase()) txt_arr[j] = apply_capitals(mt_lib[i].r, capitals)
+          if(txt_arr[j].toLowerCase() === mt_lib[i].w.toLowerCase()) {
+            txt_arr[j] = apply_capitals(mt_lib[i].r, capitals);
+          }
         }
       }
       for(i = 0; i < punct.length; i++) {
@@ -92,8 +95,11 @@ function mt(mt_lib, div) {
       txt = txt_arr.join(" ");
 
       // Apply translation
-      if($(div).attr("id") === "mt-output") $(div).val(txt);
-      else $(div).text(txt)
+      if($(div).attr("id") === "mt-output") {
+        $(div).val(txt);
+      } else {
+        $(div).text(txt);
+      }
     }
   }
 }
@@ -109,25 +115,34 @@ function detect_capitals(word) {
 function apply_capitals(word, capitals) {
   var ret = "";
   if(word.length >= capitals.length) {
-    for(var i = 0; i < capitals.length; i++)
-      if(capitals[i]) ret += word.charAt(i).toUpperCase();
-      else ret += word.charAt(i).toLowerCase();
+    for(var i = 0; i < capitals.length; i++) {
+      if(capitals[i]) {
+        ret += word.charAt(i).toUpperCase();
+      } else {
+        ret += word.charAt(i).toLowerCase();
+      }
     ret += word.substr(i, word.length - 1)
-  } else
-    for(var i = 0; i < word.length; i++)
-      if(capitals[i]) ret += word.charAt(i).toUpperCase();
-      else ret += word.charAt(i).toLowerCase(); return ret
+  } else {
+    for(var i = 0; i < word.length; i++) {
+      if(capitals[i]) {
+        ret += word.charAt(i).toUpperCase();
+      } else {
+        ret += word.charAt(i).toLowerCase();
+      }
+    }
+  }
+  return ret;
 }
 
-function pun(c, i) {
+function Pun(c, i) {
   this.c = c;
-  this.idx = i
+  this.idx = i;
 }
 
 // Static
 function mt_translate(mt_lib) {
   $(".mt-translate").each(function(i, div) {
-    mt(mt_lib, div)
+    mt(mt_lib, div);
   })
 }
 
@@ -135,13 +150,13 @@ function mt_translate(mt_lib) {
 function mt_watch(mt_lib, inp, out) {
   $(inp).keyup(function() {
     $(out).val($(this).val());
-    mt(mt_lib, $(out))
+    mt(mt_lib, $(out));
   })
 }
 
 // Validate
-if($("#mt-input").length > 0 && !$("#mt-output").length > 0) console.log("MT-DEBUG: Input detected but no Output. Check your input IDs");
-if(!$("#mt-input").length > 0 && $("#mt-output").length > 0) console.log("MT-DEBUG: Output detected but no Input. Check your input IDs");
+if($("#mt-input").length > 0 && !$("#mt-output").length > 0) { console.log("MT-DEBUG: Input detected but no Output. Check your input IDs"); }
+if(!$("#mt-input").length > 0 && $("#mt-output").length > 0) { console.log("MT-DEBUG: Output detected but no Input. Check your input IDs"); }
 
 // Instantiate
 mt_watch(mt_lib, $("#mt-input"), $("#mt-output"));
