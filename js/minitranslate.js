@@ -106,10 +106,14 @@ function mt(mt_lib, div) {
 
 function detect_capitals(word) {
   var detect = [];
-  for(var i = 0; i < word.length; i++)
-    if(word.charAt(i) >= "A" && word.charAt(i) <= "Z") detect.push(1);
-    else detect.push(0);
-  return detect
+  for(var i = 0; i < word.length; i++) {
+    if(word.charAt(i) >= "A" && word.charAt(i) <= "Z") {
+      detect.push(1);
+    } else {
+      detect.push(0);
+    }
+  }
+  return detect;
 }
 
 function apply_capitals(word, capitals) {
