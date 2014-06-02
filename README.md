@@ -3,6 +3,8 @@ jQuery.minitranslate
 
 A lightweight way to change words into other words.
 
+[![Code Climate](https://codeclimate.com/github/brycedorn/jQuery.minitranslate.png)](https://codeclimate.com/github/brycedorn/jQuery.minitranslate)
+
 http://bryce.io/minitranslate
 
 http://cdnjs.com/libraries/minitranslate
