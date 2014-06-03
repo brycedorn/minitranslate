@@ -8,9 +8,9 @@
 <body>
   <div id="qunit"></div>
   <div id="qunit-fixture"></div>
-
+  <hr>
   <div id="test-static" class="mt-translate">
-    <h1>Hello static World!</h1>
+    <h1>Hello World!</h1>
   </div>
   <hr>
   <div id="test-dynamic">
@@ -19,21 +19,35 @@
   </div>
   <hr>
   <div id="test-ignore" class="mt-translate">
-    <h1>Hello World, don't ignore me!</h1>
+    <h1>Hello World!</h1>
     <h2 class="mt-ignore">Hello World, please ignore me!</h2>
   </div>
   <hr>
-  <div class="mt-ignore">
+  <div id="test-dontignore" class="mt-ignore">
     <h1>Hello, don't translate me!</h1>
+    <h2 class="mt-translate">Hello World, please translate me!</h2>
   </div>
+  <hr>
+  <div id="test-family" class="mt-translate">
+    <h1>Hello World!</h1>
+    <div id="foo">
+      <h2>Hello parent</h2>
+    </div>
+    <div id="bar">
+      <h2>Third world</h2>
+    </div>
+    <h2>Hello World!</h2>
+  </div>
+  <hr>
   <div id="test-caps" class="mt-translate">
     <h1>HelLo wOrLd!</h1>
+    <h2>WORLd!</h2>
   </div>
 
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/qunit/1.14.0/qunit.min.js"></script>
-  <script src="js/mt-lib.js"></script>
-  <script src="js/minitranslate.min.js"></script>
-  <script src="js/tests.js"></script>
+  <script src="../js/mt-lib.js"></script>
+  <script src="../js/minitranslate.min.js"></script>
+  <script src="tests.js"></script>
 </body>
 </html>
