@@ -1,5 +1,6 @@
 {
   "name": "minitranslate",
+  "title": "jQuery.minitranslate",
   "version": "0.7.1",
   "description": "A lightweight way to change words into other words.",
   "keywords": [
