@@ -3,7 +3,7 @@ jQuery.minitranslate
 
 A lightweight way to change words into other words.
 
-[![Code Climate](https://codeclimate.com/github/brycedorn/jQuery.minitranslate.png)](https://codeclimate.com/github/brycedorn/jQuery.minitranslate)
+[![Code Climate](https://codeclimate.com/github/brycedorn/jQuery.minitranslate.png)](https://codeclimate.com/github/brycedorn/jQuery.minitranslate) [![NPM version](https://badge.fury.io/js/minitranslate.svg)](http://badge.fury.io/js/minitranslate)
 
 [bryce.io/minitranslate](http://bryce.io/minitranslate)
 
