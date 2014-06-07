@@ -29,11 +29,8 @@ test("Work in static case", function() {
   ok($("#test-static").children().text() === "Goodbye Mars!", "Passed!" );
 });
 
-test("Work in dynamic case", function() {
-  ok($("#mt-input").val() === "Hello World!", "Passed!" );
-  // Can't test this automatically - requires keyup event which jQuery can't simulate to my knowledge.
-  // Uses the same functions as static case, so those test cases still apply.
-});
+// Can't test dynamic case automatically - requires keyup event which jQuery can't simulate to my knowledge.
+// Uses the same functions as button's case, so those test cases still apply.
 
 test("Ignore those we want to ignore", function() {
   ok($("#test-ignore").attr('class') === "mt-translate", "Passed!" );
@@ -59,4 +56,14 @@ test("Apply to a 2nd gen of children", function() {
 test("Apply with weird capitalizations", function() {
   ok($("#test-caps").children('h1').text() === "GooDbye mArS!" );
   ok($("#test-caps").children('h2').text() === "MARS!" );
+});
+
+test("Wait to apply if mt-patient on input div", function() {
+  ok($("#test-patient").children('#mt-input').val() === "Hello World!" );
+
+  // Click button
+  $("#mt-button").click();
+
+  ok($("#test-patient").children('#mt-input').val() === "Hello World!" );
+  ok($("#test-patient").children('#mt-output').val() === "Goodbye Mars!" );
 });
