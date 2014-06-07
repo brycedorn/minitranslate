@@ -30,6 +30,8 @@ A lightweight way to change words into other words.
   <input id="mt-input"/>
   <input id="mt-output"/>
   ```
+   * Add class `.mt-patient` to `#mt-input` to translate only once `#mt-button` is clicked
+
  * Static content translation:
 
   ```html
