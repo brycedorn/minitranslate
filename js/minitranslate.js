@@ -4,87 +4,80 @@
  * minitranslate.herokuapp.com
  *
  * @version
- * 0.8.0 (June 7 2014)
+ * 0.8.1 (July 3 2014)
  *
  * @license
  * The MIT license.
  */
 function mt(mt_lib, div) {
-  var i,j,txt,txt_arr,tmp,punct,capitals;
-  if($(div).length > 0 && (mt_lib.length > 0 && $(div).attr("class") !== "mt-ignore")) {
-    
-    // Children!
-    if($(div).children().length > 0) {
-      for(j = 0; j < $(div).children().length; j++) {
-        if($($(div).children()[j]).attr("class") !== "mt-ignore") {
-          // Shouldn't be an input div, so get text (not val)
-          txt = $($(div).children()[j]).text();
+  var i, txt, txt_arr, tmp, punct, capitals;
+  if ($(div).length > 0 && (mt_lib.length > 0 && $(div).attr("class") !== "mt-ignore")) {
+    if ($(div).children().length > 0) { // Children
+      // TODO - refactor to recursively apply to all children
+      $.each($(div).children(), function(i, c) {
+        if ($(c).attr("class") !== "mt-ignore") {
+          punct_and_text = prepare_punct_and_text(c);
 
-          // Find where punctuation was so we can re-apply at end
-          tmp = txt.split(" ");
+          iterate_lib(punct_and_text[0], capitals, mt_lib);
 
-          // Only do this if there is punctuation
-          punct = get_punct(tmp);
+          append_punct(punct_and_text[0], punct_and_text[1]);
 
-          // Array of tokens without punctuation
-          txt = txt.replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g, "");
-          txt_arr = txt.split(" ");
-
-          // Iterate through library
-          iterate_lib(txt_arr, capitals, mt_lib);
-
-          for(i = 0; i < punct.length; i++) {
-            txt_arr[punct[i].idx] += punct[i].c;
-          }
-
-          // All words are applied
-          txt = txt_arr.join(" ");
-
-          // Apply translation
-          $($(div).children()[j]).text(txt);
+          apply_changes(c, punct_and_text[0])
         }
-      }
-    } else { // No kids :(
-      // If it's an input, get val(), otherwise get text()
-      if($(div).attr("id") === "mt-output") {
-        txt = $(div).val();
-      } else { txt = $(div).text(); }
+      });
+    } else { // No children
+      punct_and_text = prepare_punct_and_text(div);
 
-      // Find where punctuation was so we can re-apply at end
-      tmp = txt.split(" ");
+      iterate_lib(punct_and_text[0], capitals, mt_lib);
 
-      // Only do this if there is punctuation
-      punct = get_punct(tmp);
+      append_punct(punct_and_text[0], punct_and_text[1]);
 
-      // Array of tokens without punctuation
-      txt = txt.replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g, "");
-      txt_arr = txt.split(" ");
-
-      // Iterate through library
-      iterate_lib(txt_arr, capitals, mt_lib);
-
-      for(i = 0; i < punct.length; i++) {
-        txt_arr[punct[i].idx] += punct[i].c;
-      }
-
-      // All words are applied
-      txt = txt_arr.join(" ");
-
-      // Apply translation
-      if($(div).attr("id") === "mt-output") {
-        $(div).val(txt);
-      } else {
-        $(div).text(txt);
-      }
+      apply_changes(div, punct_and_text[0]);
     }
   }
 }
 
+function append_punct(txt, punct) {
+  for (i = 0; i < punct.length; i++) {
+    txt[punct[i].idx] += punct[i].c;
+  }
+}
+
+function apply_changes(item, array) {
+  txt = array.join(" ");
+
+  if ($(item).attr("id") === "mt-output") {
+    $(item).val(txt);
+  } else {
+    $(item).text(txt);
+  }
+}
+
+function prepare_punct_and_text(item) {
+  if ($(item).attr("id") === "mt-output") {
+    txt = $(item).val();
+  } else {
+    txt = $(item).text();
+  }
+
+  // Find where punctuation was so we can re-apply at end
+  tmp = txt.split(" ");
+
+  // Only do this if there is punctuation
+  punct = get_punct(tmp);
+
+  // Array of tokens without punctuation
+  txt = txt.replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+  txt_arr = txt.split(" ");
+
+  return [txt_arr, punct];
+}
+
 function iterate_lib(t, capitals, mt_lib) {
-  for(var i = 0; i < mt_lib.length; i++) {
-    for(var j = 0; j < t.length; j++) {
+  for (i = 0; i < mt_lib.length; i++) {
+    for (j = 0; j < t.length; j++) {
       capitals = detect_capitals(t[j]);
-      if(t[j].toLowerCase() === mt_lib[i].w.toLowerCase()) {
+      if (t[j].toLowerCase() === mt_lib[i].w.toLowerCase()) {
         t[j] = apply_capitals(mt_lib[i].r, capitals);
       }
     }
@@ -93,10 +86,10 @@ function iterate_lib(t, capitals, mt_lib) {
 
 function get_punct(tmp) {
   var p = [];
-  for(var i = 0; i < tmp.length; i++) {
-    for(var j = 0; j < tmp[i].length; j++) {
+  for (i = 0; i < tmp.length; i++) {
+    for (j = 0; j < tmp[i].length; j++) {
       // Word at index i has punctuation at end of it.
-      if(tmp[i].charAt(j) === "!" || tmp[i].charAt(j) === "?" || tmp[i].charAt(j) === "," || tmp[i].charAt(j) === ".") {
+      if (tmp[i].charAt(j) === "!" || tmp[i].charAt(j) === "?" || tmp[i].charAt(j) === "," || tmp[i].charAt(j) === ".") {
         p.push(new Pun(tmp[i].charAt(j), i));
       }
     }
@@ -106,8 +99,8 @@ function get_punct(tmp) {
 
 function detect_capitals(word) {
   var detect = [];
-  for(var i = 0; i < word.length; i++) {
-    if(word.charAt(i) >= "A" && word.charAt(i) <= "Z") {
+  for (var i = 0; i < word.length; i++) {
+    if (word.charAt(i) >= "A" && word.charAt(i) <= "Z") {
       detect.push(1);
     } else {
       detect.push(0);
@@ -119,14 +112,14 @@ function detect_capitals(word) {
 function apply_capitals(word, capitals) {
   var ret = "";
   var end = (word.length >= capitals.length) ? capitals.length : word.length;
-  for(var i = 0; i < end; i++) {
-    if(capitals[i]) {
+  for (var i = 0; i < end; i++) {
+    if (capitals[i]) {
       ret += word.charAt(i).toUpperCase();
     } else {
       ret += word.charAt(i).toLowerCase();
     }
   }
-  if(word.length >= capitals.length) { 
+  if (word.length >= capitals.length) {
     ret += word.substr(i, word.length - 1);
   }
   return ret;
@@ -147,7 +140,7 @@ function mt_translate(mt_lib) {
 // Dynamic
 function mt_watch(mt_lib, inp, out) {
   $(inp).keyup(function() {
-    if(!inp.hasClass('mt-patient')) {
+    if (!inp.hasClass('mt-patient')) {
       $(out).val($(this).val());
       mt(mt_lib, $(out));
     }
@@ -159,8 +152,12 @@ function mt_watch(mt_lib, inp, out) {
 }
 
 // Validate
-if($("#mt-input").length > 0 && $("#mt-output").length === 0) { console.log("MT-DEBUG: Input detected but no Output. Check your input IDs"); }
-if($("#mt-input").length === 0 && $("#mt-output").length > 0) { console.log("MT-DEBUG: Output detected but no Input. Check your input IDs"); }
+if ($("#mt-input").length > 0 && $("#mt-output").length === 0) {
+  console.log("MT-DEBUG: Input detected but no Output. Check your input IDs");
+}
+if ($("#mt-input").length === 0 && $("#mt-output").length > 0) {
+  console.log("MT-DEBUG: Output detected but no Input. Check your input IDs");
+}
 
 // Instantiate
 mt_watch(mt_lib, $("#mt-input"), $("#mt-output"));
