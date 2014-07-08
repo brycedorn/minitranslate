@@ -11,11 +11,18 @@
  */
 function mt(mt_lib, div) {
   var i, txt, txt_arr, tmp, punct, capitals;
-  if ($(div).length > 0 && (mt_lib.length > 0 && $(div).attr("class") !== "mt-ignore")) {
-    if ($(div).children().length > 0) { // Children
-      // TODO - refactor to recursively apply to all children
-      $.each($(div).children(), function(i, c) {
-        if ($(c).attr("class") !== "mt-ignore") {
+
+  if (div.innerHTML !== '' && (mt_lib.length > 0 && div.getAttribute("class") !== "mt-ignore")) {
+    if (div.children.length > 0) {
+
+      var elements = div.children;
+
+      elements += Array.prototype.filter.call(div.parentNode.children, function(child) {
+        return child !== div;
+      });
+
+      Array.prototype.forEach.call(elements, function(c, i) {
+        if (c.getAttribute("class") !== "mt-ignore") {
           punct_and_text = prepare_punct_and_text(c);
 
           iterate_lib(punct_and_text[0], capitals, mt_lib);
@@ -46,18 +53,18 @@ function append_punct(txt, punct) {
 function apply_changes(item, array) {
   txt = array.join(" ");
 
-  if ($(item).attr("id") === "mt-output") {
-    $(item).val(txt);
+  if (item.getAttribute("id") === "mt-output") {
+    item.value = txt;
   } else {
-    $(item).text(txt);
+    item.text = txt;
   }
 }
 
 function prepare_punct_and_text(item) {
-  if ($(item).attr("id") === "mt-output") {
-    txt = $(item).val();
+  if (item.getAttribute("id") === "mt-output") {
+    txt = item.value;
   } else {
-    txt = $(item).text();
+    txt = item.text;
   }
 
   // Find where punctuation was so we can re-apply at end
@@ -132,33 +139,36 @@ function Pun(c, i) {
 
 // Static
 function mt_translate(mt_lib) {
-  $(".mt-translate").each(function(i, div) {
-    mt(mt_lib, div);
+  var elements = document.querySelectorAll(".mt-translate");
+  Array.prototype.forEach.call(elements, function(el, i) {
+    mt(mt_lib, el);
   });
 }
 
 // Dynamic
 function mt_watch(mt_lib, inp, out) {
-  $(inp).keyup(function() {
-    if (!inp.hasClass('mt-patient')) {
-      $(out).val($(this).val());
-      mt(mt_lib, $(out));
+  inp.onkeyup = function() {
+    if (!inp.getAttribute("class" === 'mt-patient')) {
+      out.value = inp.value;
+      mt(mt_lib, out);
     }
-  });
-  $("#mt-button").click(function() {
-    $(out).val($(inp).val());
-    mt(mt_lib, $(out));
+  };
+  document.getElementById("#mt-button").click(function() {
+    out.value = inp.value;
+    mt(mt_lib, out);
   });
 }
 
 // Validate
-if ($("#mt-input").length > 0 && $("#mt-output").length === 0) {
+if (document.getElementById("#mt-input") && !document.getElementById("#mt-output")) {
   console.log("MT-DEBUG: Input detected but no Output. Check your input IDs");
 }
-if ($("#mt-input").length === 0 && $("#mt-output").length > 0) {
+if (!document.getElementById("#mt-input") && document.getElementById("#mt-output")) {
   console.log("MT-DEBUG: Output detected but no Input. Check your input IDs");
 }
 
 // Instantiate
-mt_watch(mt_lib, $("#mt-input"), $("#mt-output"));
+if (document.getElementById("#mt-input") && document.getElementById("#mt-output")) {
+  mt_watch(mt_lib, document.getElementById("#mt-input"), document.getElementById("#mt-output"));
+}
 mt_translate(mt_lib);
