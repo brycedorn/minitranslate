@@ -1,9 +1,9 @@
-jQuery.minitranslate
+minitranslate
 ====================
 
-A lightweight way to change words into other words.
+A lightweight way to change words into other words. Now without jQuery!
 
-[![Code Climate](https://codeclimate.com/github/brycedorn/jQuery.minitranslate.png)](https://codeclimate.com/github/brycedorn/jQuery.minitranslate) [![NPM version](https://badge.fury.io/js/minitranslate.svg)](http://badge.fury.io/js/minitranslate)
+[![Code Climate](https://codeclimate.com/github/brycedorn/minitranslate.png)](https://codeclimate.com/github/brycedorn/minitranslate) [![NPM version](https://badge.fury.io/js/minitranslate.svg)](http://badge.fury.io/js/minitranslate)
 
 [bryce.io/minitranslate](http://bryce.io/minitranslate)
 
@@ -14,7 +14,8 @@ A lightweight way to change words into other words.
 
 ## Features
  * WYSIWYG word-replacement translator
- * RegExp matching and jQuery replacement
+ * jQuery-free
+ * RegExp matching and javascript replacement
  * Simple library in `mt-lib.js`:
   ```java
   var mt_lib = [
