@@ -4,16 +4,14 @@
  * minitranslate.herokuapp.com
  *
  * @version
- * 1.0.2 (July 8 2014)
+ * 1.0.3 (July 8 2014)
  *
  * @license
  * The MIT license.
  */
 function mt(mt_lib, div) {
-  var i, txt, txt_arr, tmp, punct, capitals;
   if ((div.innerHTML !== '' || div.value !== '') && (mt_lib.length > 0 && div.getAttribute("class") !== "mt-ignore")) {
     if (div.children.length > 0) {
-
       var elements = div.children;
 
       // elements += Array.prototype.filter.call(div.parentNode.children, function(child) {
@@ -24,17 +22,17 @@ function mt(mt_lib, div) {
         if (c.getAttribute("class") !== "mt-ignore") {
           punct_and_text = prepare_punct_and_text(c);
 
-          iterate_lib(punct_and_text[0], capitals, mt_lib);
+          iterate_lib(punct_and_text[0], mt_lib);
 
           append_punct(punct_and_text[0], punct_and_text[1]);
 
-          apply_changes(c, punct_and_text[0])
+          apply_changes(c, punct_and_text[0]);
         }
       });
     } else { // No children
       punct_and_text = prepare_punct_and_text(div);
 
-      iterate_lib(punct_and_text[0], capitals, mt_lib);
+      iterate_lib(punct_and_text[0], mt_lib);
 
       append_punct(punct_and_text[0], punct_and_text[1]);
 
@@ -44,13 +42,13 @@ function mt(mt_lib, div) {
 }
 
 function append_punct(txt, punct) {
-  for (i = 0; i < punct.length; i++) {
+  for (var i = 0; i < punct.length; i++) {
     txt[punct[i].idx] += punct[i].c;
   }
 }
 
 function apply_changes(item, array) {
-  txt = array.join(" ");
+  var txt = array.join(" ");
   if (item.id === "mt-output") {
     item.value = txt;
   } else {
@@ -60,27 +58,27 @@ function apply_changes(item, array) {
 
 function prepare_punct_and_text(item) {
   if (item.id === "mt-output") {
-    txt = item.value;
+    var txt = item.value;
   } else {
-    txt = item.innerText;
+    var txt = item.innerText;
   }
   // Find where punctuation was so we can re-apply at end
-  tmp = txt.split(" ");
+  var tmp = txt.split(" ");
 
   // Only do this if there is punctuation
-  punct = get_punct(tmp);
+  var punct = get_punct(tmp);
 
   // Array of tokens without punctuation
   txt = txt.replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g, "");
-  txt_arr = txt.split(" ");
+  var txt_arr = txt.split(" ");
 
   return [txt_arr, punct];
 }
 
-function iterate_lib(t, capitals, mt_lib) {
-  for (i = 0; i < mt_lib.length; i++) {
-    for (j = 0; j < t.length; j++) {
-      capitals = detect_capitals(t[j]);
+function iterate_lib(t, mt_lib) {
+  for (var i = 0; i < mt_lib.length; i++) {
+    for (var j = 0; j < t.length; j++) {
+      var capitals = detect_capitals(t[j]);
       if (t[j].toLowerCase() === mt_lib[i].w.toLowerCase()) {
         t[j] = apply_capitals(mt_lib[i].r, capitals);
       }
@@ -90,9 +88,8 @@ function iterate_lib(t, capitals, mt_lib) {
 
 function get_punct(tmp) {
   var p = [];
-  for (i = 0; i < tmp.length; i++) {
-    for (j = 0; j < tmp[i].length; j++) {
-      // Word at index i has punctuation at end of it.
+  for (var i = 0; i < tmp.length; i++) {
+    for (var j = 0; j < tmp[i].length; j++) {
       if (tmp[i].charAt(j) === "!" || tmp[i].charAt(j) === "?" || tmp[i].charAt(j) === "," || tmp[i].charAt(j) === ".") {
         p.push(new Pun(tmp[i].charAt(j), i));
       }
