@@ -5,7 +5,7 @@ A lightweight way to change words into other words. Now without jQuery!
 
 [![Code Climate](https://codeclimate.com/github/brycedorn/minitranslate.png)](https://codeclimate.com/github/brycedorn/minitranslate) [![NPM version](https://badge.fury.io/js/minitranslate.svg)](http://badge.fury.io/js/minitranslate)
 
-[bryce.io/minitranslate](http://bryce.io/minitranslate)
+[minitranslate.herokuapp.com](http://minitranslate.herokuapp.com)
 
 
 ## Installation
