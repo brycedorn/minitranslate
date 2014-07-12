@@ -4,7 +4,7 @@
  * minitranslate.herokuapp.com
  *
  * @version
- * 1.0.3 (July 8 2014)
+ * 1.1.0 (July 11 2014)
  *
  * @license
  * The MIT license.
@@ -12,42 +12,29 @@
 function mt(mt_lib, div) {
   if ((div.innerHTML !== '' || div.value !== '') && (mt_lib.length > 0 && div.getAttribute("class") !== "mt-ignore")) {
     if (div.children.length > 0) {
-      var elements = div.children;
-
-      // elements += Array.prototype.filter.call(div.parentNode.children, function(child) {
-      //   return child !== div;
-      // });
-
-      Array.prototype.forEach.call(elements, function(c, i) {
-        if (c.getAttribute("class") !== "mt-ignore") {
-          punct_and_text = prepare_punct_and_text(c);
-
-          iterate_lib(punct_and_text[0], mt_lib);
-
-          append_punct(punct_and_text[0], punct_and_text[1]);
-
-          apply_changes(c, punct_and_text[0]);
+      Array.prototype.forEach.call(div.children, function(el, i) {
+        if (el.getAttribute("class") !== "mt-ignore") {
+          apply_translation(el);
         }
       });
-    } else { // No children
-      punct_and_text = prepare_punct_and_text(div);
-
-      iterate_lib(punct_and_text[0], mt_lib);
-
-      append_punct(punct_and_text[0], punct_and_text[1]);
-
-      apply_changes(div, punct_and_text[0]);
-    }
+    } else apply_translation(div);
   }
 }
 
-function append_punct(txt, punct) {
-  for (var i = 0; i < punct.length; i++) {
-    txt[punct[i].idx] += punct[i].c;
-  }
+function apply_translation(div) {
+  d = delouse(div);
+  iterate_lib(d[0], mt_lib);
+  append_punctuation(d[0], d[1]);
+  write_changes(div, d[0]);
 }
 
-function apply_changes(item, array) {
+function append_punctuation(txt, punct) {
+  punct.map(function(p) {
+    txt[p.idx] += p.c;
+  });
+}
+
+function write_changes(item, array) {
   var txt = array.join(" ");
   if (item.id === "mt-output") {
     item.value = txt;
@@ -56,58 +43,43 @@ function apply_changes(item, array) {
   }
 }
 
-function prepare_punct_and_text(item) {
-  if (item.id === "mt-output") {
-    var txt = item.value;
-  } else {
-    var txt = item.innerText;
-  }
-  // Find where punctuation was so we can re-apply at end
+// Sanitizes & saves punctuation
+function delouse(item) {
+  var txt = (item.id === "mt-output") ? item.value : item.innerText;
   var tmp = txt.split(" ");
-
-  // Only do this if there is punctuation
   var punct = get_punct(tmp);
-
-  // Array of tokens without punctuation
-  txt = txt.replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g, "");
-  var txt_arr = txt.split(" ");
-
+  txt_arr = txt.replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g, "").split(" ");
   return [txt_arr, punct];
 }
 
 function iterate_lib(t, mt_lib) {
-  for (var i = 0; i < mt_lib.length; i++) {
-    for (var j = 0; j < t.length; j++) {
-      var capitals = detect_capitals(t[j]);
-      if (t[j].toLowerCase() === mt_lib[i].w.toLowerCase()) {
-        t[j] = apply_capitals(mt_lib[i].r, capitals);
-      }
-    }
+  for (var j = 0; j < t.length; j++) {
+    mt_lib.every(function(entry) {
+      if (t[j].toLowerCase() === entry.w.toLowerCase()) {
+        var capitals = detect_capitals(t[j]);
+        t[j] = apply_capitals(entry.r, capitals);
+        return false;
+      } else return true;
+    });
   }
 }
 
 function get_punct(tmp) {
-  var p = [];
-  for (var i = 0; i < tmp.length; i++) {
-    for (var j = 0; j < tmp[i].length; j++) {
-      if (tmp[i].charAt(j) === "!" || tmp[i].charAt(j) === "?" || tmp[i].charAt(j) === "," || tmp[i].charAt(j) === ".") {
-        p.push(new Pun(tmp[i].charAt(j), i));
+  var keep = [];
+  tmp.map(function(b, i) {
+    b.split('').map(function(c) {
+      if (c === "!" || c === "?" || c === "," || c === ".") {
+        keep.push(new Pun(c, i));
       }
-    }
-  }
-  return p;
+    });
+  });
+  return keep;
 }
 
 function detect_capitals(word) {
-  var detect = [];
-  for (var i = 0; i < word.length; i++) {
-    if (word.charAt(i) >= "A" && word.charAt(i) <= "Z") {
-      detect.push(1);
-    } else {
-      detect.push(0);
-    }
-  }
-  return detect;
+  return word.split('').map(function(letter, i) {
+    return (word.charAt(i) >= "A" && word.charAt(i) <= "Z") ? 1 : 0;
+  });
 }
 
 function apply_capitals(word, capitals) {
@@ -126,6 +98,7 @@ function apply_capitals(word, capitals) {
   return ret;
 }
 
+// Associates index & char
 function Pun(c, i) {
   this.c = c;
   this.idx = i;
@@ -133,8 +106,7 @@ function Pun(c, i) {
 
 // Static
 function mt_translate(mt_lib) {
-  var elements = document.querySelectorAll(".mt-translate");
-  Array.prototype.forEach.call(elements, function(el, i) {
+  Array.prototype.forEach.call(document.querySelectorAll(".mt-translate"), function(el, i) {
     mt(mt_lib, el);
   });
 }
@@ -162,14 +134,14 @@ function mt_watch(mt_lib) {
 
 // Validate
 if (document.getElementById("mt-input") && !document.getElementById("mt-output")) {
-  console.log("mt.js: Input detected but no output. Check your input IDs");
+  console.log("mt.js: Input detected but no output. Check your output ID");
 }
 if (!document.getElementById("mt-input") && document.getElementById("mt-output")) {
-  console.log("mt.js: Output detected but no input. Check your input IDs");
+  console.log("mt.js: Output detected but no input. Check your input ID");
 }
 
 // Instantiate
-if (document.getElementById("mt-input") !== null && document.getElementById("mt-output") !== null || document.getElementById("mt-button") !== null) {
+if (document.getElementById("mt-input") && document.getElementById("mt-output")) {
   mt_watch(mt_lib);
 }
 mt_translate(mt_lib);
