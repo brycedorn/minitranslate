@@ -1,6 +1,4 @@
 // QUnit Testing suite
-//
-// Sample library
 var library = [{
   w: "Hello",
   r: "Goodbye"
@@ -26,9 +24,6 @@ test("Work in static case", function() {
   ok($("#test-static").attr('class') === "mt-translate", "Passed!");
   ok($("#test-static").children().text() === "Goodbye Mars!", "Passed!");
 });
-
-// Can't test dynamic case automatically - requires keyup event which jQuery can't simulate to my knowledge.
-// Uses the same functions as button's case, so those test cases still apply.
 
 test("Ignore those we want to ignore", function() {
   ok($("#test-ignore").attr('class') === "mt-translate", "Passed!");
@@ -56,6 +51,8 @@ test("Apply with weird capitalizations", function() {
   ok($("#test-caps").children('h2').text() === "MARS!");
 });
 
+// Can't test dynamic case automatically - requires keyup event which jQuery can't simulate to my knowledge.
+// Uses the same functions as button's case, so those test cases still apply.
 test("Wait to apply if mt-patient on input div", function() {
   ok($("#test-patient").children('#mt-input').val() === "Hello World!");
 
