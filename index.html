@@ -19,7 +19,7 @@ bryce.io
   <meta name="keywords" content="minitranslate mini translate js nojquery" />
   <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:600,700' rel='stylesheet' type='text/css'>
-  <link REL="shortcut icon" HREF="img/favicon.ico">
+  <link rel="shortcut icon" href="img/favicon.ico">
   <link rel="stylesheet" href="css/styles.css">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
 </head>
@@ -45,8 +45,8 @@ bryce.io
                 <button type="button" class="btn btn-lg btn-info"><a href="#use">Install</a></button>
                 <button type="button" class="btn btn-lg btn-warning"><a href="test">Tests</a></button>
                 <div class="btn-group">
-                  <button type="button" class="btn btn-lg btn-success dropdown-toggle" data-toggle="dropdown"><a>Download</a> <span class="caret"></span></button>
-                  <ul class="dropdown-menu" role="menu">
+                  <button type="button" id="dropdown-button" class="btn btn-lg btn-success dropdown-toggle" data-toggle="dropdown"><a id="dropdown-label">Download</a> <span class="caret"></span></button>
+                  <ul class="dropdown-menu">
                     <li><a href="js/minitranslate.js">minitranslate.js</a></li>
                     <li><a href="js/minitranslate.min.js">minitranslate.min.js</a></li>
                     <li class="divider"></li>
@@ -72,7 +72,7 @@ bryce.io
 
         <div class="col-md-4 col-md-offset-2 col-lg-4 col-lg-offset-2">
           <div class="input-group-lg try">
-            <h3 align="right">...and see it translated here.</h3>
+            <h3 align="right">...see it translated here.</h3>
             <input type="text" class="form-control" id="mt-output" placeholder="Translated text!"></input>
           </div>
         </div>
@@ -142,7 +142,7 @@ bryce.io
         <img src="img/box@2x.png">
         <div class="caption">
           <h2>One tiny package.</h2>
-          <p>The minimized file is only 2kb in size - perfect for light web projects and quick additions to existing text interfaces.</p>
+          <p>The minified file is only <b>2kb</b> in size - perfect for small web projects and quick additions to existing text interfaces.</p>
         </div>
       </div>
     </div>
@@ -158,7 +158,7 @@ bryce.io
       <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
         <h1 class="large">Installation</h1>
         <div class="caption">
-          <p>Grab either minitranslate.js or minitranslate.min.js and include it (or a link to it on cdnjs) in your index.html along with the translations library (add the library first):</p>
+          <p>Grab either minitranslate.js or minitranslate.min.js and include it (or a link to it on cdnjs) in your index.html along with your translations library (add the library first):</p>
           <p id="script">&lt;script src="js/mt-lib.js"&gt;&lt;/script&gt;</p>
           <p id="script">&lt;script src="js/minitranslate.js"&gt;&lt;/script&gt;</p>
           <p>Edit mt-lib.json and add as many word-replacement pairs as you so desire, just make sure it stays in the same directory as minitranslate.</p>
@@ -184,8 +184,7 @@ bryce.io
     </div>
 
 
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.3/zepto.min.js"></script>
     <script src="js/mt-lib.js"></script>
     <script src="js/minitranslate.js"></script>
     <script src="js/app.js"></script>
