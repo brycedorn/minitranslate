@@ -4,7 +4,7 @@
  * minitranslate.herokuapp.com
  *
  * @version
- * 1.1.0 (July 11 2014)
+ * 1.1.2 (July 28 2014)
  *
  * @license
  * The MIT license.
@@ -117,27 +117,27 @@ function mt_watch(mt_lib) {
   var outp = document.getElementById("mt-output");
   var butt = document.getElementById("mt-button");
   if (inp !== null && outp !== null) {
+    if (butt) {
+      butt.onclick = function() {
+        outp.value = inp.value;
+        mt(mt_lib, outp);
+      };
+    }
     inp.onkeyup = function() {
-      if (!inp.getAttribute("class" === 'mt-patient')) {
+      if (inp.getAttribute("class").indexOf('mt-patient') === -1) {
         outp.value = inp.value;
         mt(mt_lib, outp);
       }
     };
   }
-  if (butt !== null) {
-    document.getElementById("mt-button").click(function() {
-      outp.value = inp.value;
-      mt(mt_lib, outp);
-    });
-  }
 }
 
 // Validate
 if (document.getElementById("mt-input") && !document.getElementById("mt-output")) {
-  console.log("mt.js: Input detected but no output. Check your output ID");
+  console.log("mt.js: Input detected but no output. Check your output ID.");
 }
 if (!document.getElementById("mt-input") && document.getElementById("mt-output")) {
-  console.log("mt.js: Output detected but no input. Check your input ID");
+  console.log("mt.js: Output detected but no input. Check your input ID.");
 }
 
 // Instantiate
