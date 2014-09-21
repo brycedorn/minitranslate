@@ -4,7 +4,7 @@
  * minitranslate.herokuapp.com
  *
  * @version
- * 1.1.2 (July 28 2014)
+ * 1.1.3 (Sept 6 2014)
  *
  * @license
  * The MIT license.
