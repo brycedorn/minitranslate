@@ -3,9 +3,9 @@ minitranslate.js
 
 A lightweight way to change words into other words.
 
-[![Code Climate](https://codeclimate.com/github/brycedorn/minitranslate.png)](https://codeclimate.com/github/brycedorn/minitranslate) [![NPM version](https://badge.fury.io/js/minitranslate.svg)](http://badge.fury.io/js/minitranslate)
+[![Code Climate](https://codeclimate.com/github/guavacat/minitranslate.png)](https://codeclimate.com/github/guavacat/minitranslate) [![NPM version](https://badge.fury.io/js/minitranslate.svg)](http://badge.fury.io/js/minitranslate)
 
-[minitranslate.herokuapp.com](http://minitranslate.herokuapp.com)
+[minitranslate.me](http://minitranslate.me)
 
 
 ## Installation
