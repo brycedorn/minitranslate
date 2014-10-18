@@ -1,11 +1,11 @@
 {
   "name": "minitranslate",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A lightweight way to change words into other words.",
   "main": "js/minitranslate.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/brycedorn/minitranslate.git"
+    "url": "git://github.com/guavacat/minitranslate.git"
   },
   "keywords": [
     "mini",
@@ -17,13 +17,13 @@
   "author": {
     "name": "Bryce Dorn",
     "email": "brycedorn@gmail.com",
-    "url": "http://bryce.io"
+    "url": "http://guava.cat"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/brycedorn/minitranslate/issues"
+    "url": "https://github.com/guavacat/minitranslate/issues"
   },
-  "homepage": "http://minitranslate.herokuapp.com",
+  "homepage": "http://minitranslate.me",
   "_from": "minitranslate@",
   "_npmVersion": "1.3.8",
   "_npmUser": {
