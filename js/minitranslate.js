@@ -1,10 +1,9 @@
 /**
  * minitranslate.js
- * http://bryce.io/minitranslate
- * minitranslate.herokuapp.com
+ * www.minitranslate.me
  *
  * @version
- * 1.1.3 (Sept 6 2014)
+ * 1.2.0 (Oct 17 2014)
  *
  * @license
  * The MIT license.
@@ -12,17 +11,17 @@
 function mt(mt_lib, div) {
   if ((div.innerHTML !== '' || div.value !== '') && (mt_lib.length > 0 && div.getAttribute("class") !== "mt-ignore")) {
     if (div.children.length > 0) {
-      Array.prototype.forEach.call(div.children, function(el, i) {
+      Array.prototype.forEach.call(div.children, function(el) {
         if (el.getAttribute("class") !== "mt-ignore") {
           apply_translation(el);
         }
       });
-    } else apply_translation(div);
+    } else { apply_translation(div); } 
   }
 }
 
 function apply_translation(div) {
-  d = delouse(div);
+  var d = delouse(div);
   iterate_lib(d[0], mt_lib);
   append_punctuation(d[0], d[1]);
   write_changes(div, d[0]);
@@ -38,9 +37,7 @@ function write_changes(item, array) {
   var txt = array.join(" ");
   if (item.id === "mt-output") {
     item.value = txt;
-  } else {
-    item.innerHTML = txt;
-  }
+  } else { item.innerHTML = txt; }
 }
 
 // Sanitizes & saves punctuation
@@ -48,7 +45,7 @@ function delouse(item) {
   var txt = (item.id === "mt-output") ? item.value : item.innerText;
   var tmp = txt.split(" ");
   var punct = get_punct(tmp);
-  txt_arr = txt.replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g, "").split(" ");
+  var txt_arr = txt.replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g, "").split(" ");
   return [txt_arr, punct];
 }
 
@@ -59,7 +56,7 @@ function iterate_lib(t, mt_lib) {
         var capitals = detect_capitals(t[j]);
         t[j] = apply_capitals(entry.r, capitals);
         return false;
-      } else return true;
+      } else { return true };
     });
   }
 }
@@ -106,7 +103,7 @@ function Pun(c, i) {
 
 // Static
 function mt_translate(mt_lib) {
-  Array.prototype.forEach.call(document.querySelectorAll(".mt-translate"), function(el, i) {
+  Array.prototype.forEach.call(document.querySelectorAll(".mt-translate"), function(el) {
     mt(mt_lib, el);
   });
 }
