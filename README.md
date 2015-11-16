@@ -5,7 +5,7 @@ A lightweight way to change words into other words.
 
 [![Code Climate](https://codeclimate.com/github/guavacat/minitranslate.png)](https://codeclimate.com/github/guavacat/minitranslate) [![NPM version](https://badge.fury.io/js/minitranslate.svg)](http://badge.fury.io/js/minitranslate)
 
-[minitranslate.me](http://minitranslate.me)
+[http://minitranslate.herokuapp.com](http://minitranslate.herokuapp.com)
 
 
 ## Installation
